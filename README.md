@@ -84,7 +84,7 @@ open frontend/index.html
 
 ---
 
-## 📡 API REST — Endpoints
+## API REST — Endpoints
 
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
