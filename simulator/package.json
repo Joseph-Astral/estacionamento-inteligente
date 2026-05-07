@@ -1,0 +1,18 @@
+{
+  "name": "parking-simulator",
+  "version": "1.0.0",
+  "description": "Simulador de sensores do estacionamento",
+  "main": "simulator.js",
+  "scripts": {
+    "start": "node simulator.js",
+    "dev": "nodemon simulator.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mqtt": "^5.3.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

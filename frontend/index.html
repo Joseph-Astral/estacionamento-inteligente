@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartPark — Dashboard de Estacionamento</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanline"></div>
+
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <div>
+          <span class="logo-title">SMARTPARK</span>
+          <span class="logo-sub">CAMPUS MONITOR v1.0</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-center">
+      <div class="status-bar">
+        <span class="pulse-dot"></span>
+        <span id="sys-status">SISTEMA ONLINE</span>
+        <span class="sep">|</span>
+        <span id="sys-time">--:--:--</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="tag">90 SENSORES</span>
+      <span class="tag">3 GATEWAYS</span>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- PAINEL ESQUERDO: Setores -->
+    <aside class="panel panel-sectors">
+      <div class="panel-title">SETORES</div>
+      <div id="sectors-list"></div>
+
+      <div class="panel-title mt">RECOMENDAÇÃO</div>
+      <div class="rec-controls">
+        <select id="rec-from">
+          <option value="A">Setor A</option>
+          <option value="B">Setor B</option>
+          <option value="C">Setor C</option>
+        </select>
+        <button class="btn-action" onclick="fetchRecommendation()">CONSULTAR</button>
+      </div>
+      <div id="rec-result" class="rec-box hidden"></div>
+
+      <div class="panel-title mt">SIMULAR FALHA</div>
+      <div class="fault-controls">
+        <input id="fault-spot" type="text" placeholder="Ex: A-07" />
+        <select id="fault-type">
+          <option value="stuck_occupied">Travado OCUPADO</option>
+          <option value="stuck_free">Travado LIVRE</option>
+          <option value="flapping">Flapping</option>
+        </select>
+        <button class="btn-danger" onclick="injectFault()">INJETAR</button>
+        <button class="btn-warn" onclick="clearFaults()">LIMPAR TUDO</button>
+      </div>
+
+      <div class="panel-title mt">LOTAR SETOR</div>
+      <div class="fault-controls">
+        <select id="fill-sector">
+          <option value="A">Setor A</option>
+          <option value="B">Setor B</option>
+          <option value="C">Setor C</option>
+        </select>
+        <button class="btn-danger" onclick="fillSector()">LOTAR (93%)</button>
+      </div>
+    </aside>
+
+    <!-- PAINEL CENTRAL: Mapa de vagas -->
+    <section class="panel panel-map">
+      <div class="panel-title">MAPA DE VAGAS — TEMPO REAL</div>
+      <div id="map-container"></div>
+    </section>
+
+    <!-- PAINEL DIREITO: Incidentes + Log -->
+    <aside class="panel panel-right">
+      <div class="panel-title">INCIDENTES ABERTOS</div>
+      <div id="incidents-list"></div>
+
+      <div class="panel-title mt">LOG DE RECOMENDAÇÕES</div>
+      <div id="recs-log"></div>
+    </aside>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

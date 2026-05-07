@@ -1,0 +1,54 @@
+# ============================================================
+# docker-compose.yml — Sobe tudo junto
+# ============================================================
+version: "3.9"
+
+services:
+
+  # ── Broker MQTT ──────────────────────────────────────────
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: parking-mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: unless-stopped
+
+  # ── Backend (HTTP + ingestão MQTT) ───────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: parking-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - MQTT_BROKER=mqtt://mosquitto:1883
+      - PORT=3000
+    depends_on:
+      - mosquitto
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  # ── Simulador ────────────────────────────────────────────
+  simulator:
+    build:
+      context: ./simulator
+      dockerfile: Dockerfile
+    container_name: parking-simulator
+    ports:
+      - "3001:3001"
+    environment:
+      - MQTT_BROKER=mqtt://mosquitto:1883
+      - SIM_PORT=3001
+    depends_on:
+      - mosquitto
+      - backend
+    volumes:
+      - ./simulator:/app
+      - /app/node_modules
+    restart: unless-stopped
