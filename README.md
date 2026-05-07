@@ -1,10 +1,10 @@
-# 🅿️ SmartPark — MVP de Estacionamento Inteligente
+# SmartPark — MVP de Estacionamento Inteligente
 
 Sistema de monitoramento de estacionamento com **MQTT**, **REST API**, **SQLite** e **Dashboard Web**.
 
 ---
 
-## 📁 Estrutura de arquivos
+## Estrutura de arquivos
 
 ```
 parking-mvp/
@@ -27,7 +27,7 @@ parking-mvp/
 
 ---
 
-## 🚀 Como rodar
+## Como rodar
 
 ### Opção 1 — Docker Compose (recomendado)
 
@@ -100,7 +100,7 @@ open frontend/index.html
 
 ---
 
-## 🔧 Controle do Simulador (HTTP)
+## Controle do Simulador (HTTP)
 
 | Método | Endpoint | Body | Descrição |
 |--------|----------|------|-----------|
@@ -132,7 +132,7 @@ curl http://localhost:3000/api/v1/recommendation?fromSector=B
 
 ---
 
-## 🕐 Tempo simulado
+## Tempo simulado
 
 - **1 segundo real = 1 minuto simulado**
 - Horários de pico: 07h–09h e 17h–19h (taxa de chegada 15%)
@@ -141,7 +141,7 @@ curl http://localhost:3000/api/v1/recommendation?fromSector=B
 
 ---
 
-## 📊 Tópicos MQTT
+## Tópicos MQTT
 
 | Tópico | Direção | Descrição |
 |--------|---------|-----------|
@@ -151,7 +151,7 @@ curl http://localhost:3000/api/v1/recommendation?fromSector=B
 
 ---
 
-## 🗄️ Banco de dados (SQLite)
+## Banco de dados (SQLite)
 
 Arquivo: `backend/parking.db`
 
@@ -164,7 +164,7 @@ Tabelas:
 
 ---
 
-## ✅ Checklist de demonstração
+## Checklist de demonstração
 
 - [x] Subir Mosquitto + backend + simulador
 - [x] `/api/v1/sectors` e `/api/v1/map` atualizando em tempo real
@@ -174,7 +174,7 @@ Tabelas:
 
 ---
 
-## ⚙️ Variáveis de ambiente
+## Variáveis de ambiente
 
 | Variável | Padrão | Descrição |
 |----------|--------|-----------|
